@@ -2,7 +2,9 @@ package com.raywenderlich.android.lab1.screens
 
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Surface
@@ -19,19 +21,30 @@ import com.raywenderlich.android.lab1.router.FundamentalsRouter
 import com.raywenderlich.android.lab1.router.Screen
 
 @Composable
-fun NavigationScreen() {
+fun NavigationScreen(modifier: Modifier = Modifier) {
     Surface(
         color = Color.White,
         modifier = Modifier.fillMaxSize()
     ) {
         Column(
+            modifier = modifier.verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            NavigationButton(stringResource(id = R.string.scrolling), Screen.Scrolling)
-            NavigationButton(stringResource(id = R.string.list), Screen.List)
-            NavigationButton(stringResource(id = R.string.grid), Screen.Grid)
+            NavigationButton(stringResource(id = R.string.button_view_text), Screen.Text)
+            NavigationButton(stringResource(id = R.string.button_textField), Screen.TextField)
+            NavigationButton(stringResource(id = R.string.button_buttons), Screen.Buttons)
+            NavigationButton(stringResource(id = R.string.button_progress), Screen.ProgressIndicator)
+            NavigationButton(stringResource(id = R.string.button_alertDialog), Screen.AlertDialog)
+            NavigationButton(stringResource(id = R.string.rowScreen), Screen.Row)
+            NavigationButton(stringResource(id = R.string.myColumn), Screen.Column)
+            NavigationButton(stringResource(id = R.string.myBox), Screen.Box)
+            NavigationButton(stringResource(id = R.string.mySurface), Screen.Surface)
+            NavigationButton(stringResource(id = R.string.myScaffold), Screen.Scaffold)
+            NavigationButton(stringResource(id = R.string.Kroll), Screen.Scrolling)
+            NavigationButton(stringResource(id = R.string.List), Screen.List)
+            NavigationButton(stringResource(id = R.string.Grid), Screen.Grid)
         }
     }
 }

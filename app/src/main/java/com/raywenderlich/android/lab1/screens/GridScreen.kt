@@ -125,4 +125,4 @@ fun GridIcon(iconResource: IconResource){
     )
 }
 
-data class IconResource(val imageVector: ImageVector, val isVisible:Boolean)
+data class IconResource(val imageVector: ImageVector, val isVisible: Boolean)
