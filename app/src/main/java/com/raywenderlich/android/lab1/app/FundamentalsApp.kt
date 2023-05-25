@@ -1,26 +1,25 @@
-package com.raywenderlich.android.lab1.router
+package com.raywenderlich.android.lab1.app
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.animation.Crossfade
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
+import com.raywenderlich.android.lab1.router.FundamentalsRouter
+import com.raywenderlich.android.lab1.router.Screen
+import com.raywenderlich.android.lab1.screens.*
 
-/**
-
-Класс, определяющий экраны, которые есть в нашем приложении.*
-Эти объекты должны соответствовать файлам, которые есть в пакете screens
- */
-sealed class Screen {
-    object Navigation : Screen()
-    object Text : Screen()
-    object TextField : Screen()
-    object Buttons : Screen()
-    object ProgressIndicator : Screen()
-    object AlertDialog : Screen()
-}
-
-object FundamentalsRouter {
-    var currentScreen: MutableState<Screen> = mutableStateOf(Screen.Navigation)
-
-    fun navigateTo(destination: Screen) {
-        currentScreen.value = destination
+@Composable
+fun FundamentalsApp() {
+    Surface(color = MaterialTheme.colors.background) {
+        Crossfade(targetState = FundamentalsRouter.currentScreen) { screenState ->
+            when (screenState.value) {
+                is Screen.Navigation -> NavigationScreen()
+                is Screen.Text -> TextScreen()
+                is Screen.TextField -> TextFieldScreen()
+                is Screen.Buttons -> ExploreButtonsScreen()
+                is Screen.ProgressIndicator -> ProgressIndicatorScreen()
+                is Screen.AlertDialog -> AlertDialogScreen()
+            }
+        }
     }
 }
