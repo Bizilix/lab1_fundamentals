@@ -1,5 +1,7 @@
 package com.raywenderlich.android.lab1.app
 
+import ColumnScreen
+import RowScreen
 import androidx.compose.animation.Crossfade
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -19,6 +21,11 @@ fun FundamentalsApp() {
                 is Screen.Buttons -> ExploreButtonsScreen()
                 is Screen.ProgressIndicator -> ProgressIndicatorScreen()
                 is Screen.AlertDialog -> AlertDialogScreen()
+                is Screen.Row -> RowScreen()
+                is Screen.Column -> ColumnScreen()
+                is Screen.Box -> BoxScreen()
+                is Screen.Scaffold -> ScaffoldScreen()
+                is Screen.Surface -> SurfaceScreen()
             }
         }
     }
